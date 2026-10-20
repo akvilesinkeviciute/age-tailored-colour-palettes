@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Akvile Sinkeviciute, Dimitris Mylonas">
+<meta name="description" content="Interactive explorer accompanying the BCS BritCHI 2026 paper Age-Tailored Colour Palettes for Inclusive Visual Communication, by Akvile Sinkeviciute and Dimitris Mylonas (Northeastern University London).">
 <title>Age-Tailored Colour Palettes — Interactive Explorer</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -25,6 +27,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 header{margin-bottom:1.75rem;padding-bottom:1.25rem;border-bottom:0.5px solid var(--border);}
 header h1{font-size:19px;font-weight:600;line-height:1.35;margin-bottom:5px;letter-spacing:-0.01em;}
 header p{font-size:13px;color:var(--text-sec);}
+header p.authors{font-size:14px;font-weight:500;color:var(--text);margin-bottom:1px;}
+footer p+p{margin-top:4px;}
+footer a{color:var(--text-sec);}
 .card{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--rad-lg);padding:1.5rem;margin-bottom:1rem;}
 .section-label{font-size:11px;font-weight:600;color:var(--text-sec);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.75rem;}
 
@@ -90,7 +95,9 @@ footer{text-align:center;font-size:12px;color:var(--text-ter);margin-top:2rem;pa
 
 <header>
   <h1>Age-Tailored Colour Palettes for Inclusive Visual Communication</h1>
-  <p>Author names withheld for anonymous review &nbsp;·&nbsp; BCS BritCHI 2026 (Short Paper)</p>
+  <p class="authors">Akvile Sinkeviciute and Dimitris Mylonas</p>
+  <p>Computing, Northeastern University London</p>
+  <p>Supplementary interactive explorer for BCS BritCHI 2026 (Short Paper)</p>
 </header>
 
 <div class="card">
@@ -157,6 +164,11 @@ footer{text-align:center;font-size:12px;color:var(--text-ter);margin-top:2rem;pa
   <div class="leg" id="legBox"></div>
   <div class="src-note">Colours shown are the leading <span id="nCap">7</span> focal colours ranked by <span id="critName">categorical distinction</span> for the <span id="ageCap">younger</span> group.</div>
 </div>
+
+<footer>
+  <p>Colour-naming data collected at <a href="https://colornaming.net">colornaming.net</a>.</p>
+  <p>Contact: <a href="mailto:a.sinkeviciute@nulondon.ac.uk">a.sinkeviciute@nulondon.ac.uk</a> or <a href="mailto:dimitris.mylonas@nulondon.ac.uk">dimitris.mylonas@nulondon.ac.uk</a></p>
+</footer>
 
 </div>
 
@@ -365,12 +377,10 @@ function updateControlsForVis() {
   const mSelEl = document.getElementById('mSel');
 
   if (kind) {
-    // Real-geography maps are always coloured by the categorical criterion
-    // (matches the paper's own Figure 5 choice) -- lock the control rather
-    // than let it silently disagree with what was actually baked in.
-    measure = 'categorical';
-    mSelEl.value = 'categorical';
-    mSelEl.disabled = true;
+    // The baked-in map specs carry the geometry and data classes; their
+    // colour range is swapped at render time for the palette of whichever
+    // ranking criterion is selected, so the criterion stays changeable.
+    mSelEl.disabled = false;
     slider.style.display = 'none';
     discrete.style.display = '';
     const specs = specsForKind(kind);
@@ -405,14 +415,26 @@ function setAge(a) {
   render();
 }
 function setN(v) { n = v; document.getElementById('nLbl').textContent = v; render(); }
-function setMeasure(v) { measure = v; syncSliderBounds(); render(); }
+function setMeasure(v) { measure = v; updateControlsForVis(); render(); }
 function setVis(v) { vis = v; updateControlsForVis(); render(); }
 
 function renderMapVis(vb, lb, kind, pal) {
   vb.classList.add('vis-box--map');
   lb.innerHTML = pal.map(([h,nm]) => `<span class="li" title="${nm} — ${hexToRgbStr(h)}"><span class="lsq" style="background:${h}"></span>${nm}</span>`).join('');
   const specs = specsForKind(kind);
-  const spec = specs && specs[age] ? specs[age][n] : undefined;
+  const baseSpec = specs && specs[age] ? specs[age][n] : undefined;
+  // Recolour the baked spec with the selected criterion's palette (shallow
+  // copies only, so the large embedded geometry is not duplicated).
+  const spec = baseSpec && {
+    ...baseSpec,
+    encoding: {
+      ...baseSpec.encoding,
+      color: {
+        ...baseSpec.encoding.color,
+        scale: { ...baseSpec.encoding.color.scale, range: pal.map(p => p[0]) },
+      },
+    },
+  };
 
   if (!spec) {
     vb.innerHTML = '<div class="src-note">Not built yet — run <code>build_paper_demo.py</code> (with real internet access and the altair / vega_datasets packages installed) to embed this map.</div>';
@@ -423,11 +445,11 @@ function renderMapVis(vb, lb, kind, pal) {
     return;
   }
 
-  const requestVis = vis, requestAge = age, requestN = n;
+  const requestVis = vis, requestAge = age, requestN = n, requestMeasure = measure;
   vb.innerHTML = '';
   vegaEmbed(vb, spec, { actions: false, renderer: 'svg' }).then(() => {
     // Drop a stale render if the controls moved on while this was in flight.
-    if (vis !== requestVis || age !== requestAge || n !== requestN) vb.innerHTML = '';
+    if (vis !== requestVis || age !== requestAge || n !== requestN || measure !== requestMeasure) vb.innerHTML = '';
   }).catch(err => {
     vb.innerHTML = `<div class="src-note">Chart failed to render: ${err.message}</div>`;
   });
