@@ -271,6 +271,57 @@ const AGE_NAME  = { younger: 'younger', mature: 'mature' };
 // Which Table 2 field, label, and sub-label to show for each ranking
 // criterion -- one box now shows only the number that matches whatever's
 // actually selected, instead of all three fixed values every time.
+// Per-colour scores from the pipeline (§5g export): each focal colour's Lab,
+// its categorical distinction (mean Hellinger distance to all focal colours of a
+// naming model) and codability (-H) under BOTH age groups' naming models. The
+// score box averages these over the colours currently shown, exactly as Table 2
+// does for the 21-colour palettes. null = not embedded yet (fixed Table 2 shown).
+// __COLOUR_METRICS_START__
+let COLOUR_METRICS = {"younger":{"beige":{"lab":[71.5,3.92,11.75140997],"dh":{"younger":0.9491889820786691,"mature":0.9094803528587436},"negH":{"younger":-2.104392613120818,"mature":-2.798330044816536}},"black":{"lab":[0.0,0.0,0.0],"dh":{"younger":0.9935103102832491,"mature":0.9870623751381118},"negH":{"younger":-0.2609212517553689,"mature":-0.48513596025551103}},"blue":{"lab":[41.14,7.34,-49.0942495],"dh":{"younger":0.9548203643204638,"mature":0.9827767981643255},"negH":{"younger":-0.8916846863957936,"mature":-1.0141943600618004}},"brown":{"lab":[30.51,18.98,30.3519954],"dh":{"younger":0.9719901768657001,"mature":0.9270817138617629},"negH":{"younger":-0.5297943121920695,"mature":-1.0308967017620403}},"cream":{"lab":[90.96,3.51,12.73435763],"dh":{"younger":0.9516432996926564,"mature":0.9502367881068547},"negH":{"younger":-2.632406135545915,"mature":-2.120068604767601}},"cyan":{"lab":[91.12,-48.07,-14.13386724],"dh":{"younger":0.9449727085889524,"mature":0.9787550738282024},"negH":{"younger":-2.2045036022286926,"mature":-2.3769852276270083}},"dark green":{"lab":[20.39,-17.68,-1.569542425],"dh":{"younger":0.9221894327447743,"mature":0.9482744053498626},"negH":{"younger":-2.724513807438659,"mature":-1.9639766690731764}},"forest green":{"lab":[20.42,-18.16,3.257283592],"dh":{"younger":0.9270127879772905,"mature":0.955843968361165},"negH":{"younger":-2.417627185208503,"mature":-1.963196055373564}},"green":{"lab":[51.55,-47.55,40.69327739],"dh":{"younger":0.9408488209939393,"mature":0.9533180095256338},"negH":{"younger":-0.7980875928887685,"mature":-1.5468180758730454}},"grey":{"lab":[41.14,0.01,-0.003015852],"dh":{"younger":0.9889709252403106,"mature":0.94400352078122},"negH":{"younger":-0.4602452363449781,"mature":-0.7442669035247299}},"lavender":{"lab":[61.38,20.24,-27.56455037],"dh":{"younger":0.9507099722612851,"mature":0.9163798673805145},"negH":{"younger":-1.785851286925203,"mature":-1.9632868365625533}},"light blue":{"lab":[91.04,-11.27,-2.165180123],"dh":{"younger":0.9355914785778399,"mature":0.934816886147927},"negH":{"younger":-3.214805091795431,"mature":-2.748734829904624}},"lilac":{"lab":[71.16,25.28,-34.39485202],"dh":{"younger":0.9413925293049051,"mature":0.9112266799078003},"negH":{"younger":-1.9180782045302651,"mature":-2.4024652343759594}},"lime green":{"lab":[89.8,-67.2,61.4433894],"dh":{"younger":0.9674350092246402,"mature":0.9629429155325275},"negH":{"younger":-1.7610873464582202,"mature":-1.8783204013606447}},"magenta":{"lab":[40.82,53.26,-8.104954777],"dh":{"younger":0.957685655892871,"mature":0.932977796135871},"negH":{"younger":-2.3163869281697087,"mature":-2.5678259458274244}},"maroon":{"lab":[20.12,37.9,9.132382066],"dh":{"younger":0.9675466020337589,"mature":0.9059482460337097},"negH":{"younger":-1.9006738543772683,"mature":-2.5889758487968577}},"mauve":{"lab":[51.34,24.91,-7.679676554],"dh":{"younger":0.9441873649397841,"mature":0.9260826454784928},"negH":{"younger":-2.6996634288247088,"mature":-2.407588594847912}},"mint":{"lab":[90.95,-36.2,20.76309869],"dh":{"younger":0.9428653856632143,"mature":0.9573152346042467},"negH":{"younger":-2.5155268144234952,"mature":-2.1137709753419527}},"navy":{"lab":[10.73,7.3,-27.00986605],"dh":{"younger":0.9607310705336164,"mature":0.953230938386017},"negH":{"younger":-1.7711376699594632,"mature":-1.989619852156129}},"olive":{"lab":[61.68,-4.85,29.67582876],"dh":{"younger":0.9395832338992582,"mature":0.9273489905523795},"negH":{"younger":-2.686332695274387,"mature":-3.037088553746556}},"orange":{"lab":[61.49,38.44,56.38178431],"dh":{"younger":0.983405687790631,"mature":0.964890358418969},"negH":{"younger":-0.5181447797456838,"mature":-0.8200978379030746}},"peach":{"lab":[71.36,20.31,26.28128526],"dh":{"younger":0.9454451975750394,"mature":0.9143360090397762},"negH":{"younger":-2.2441522768286974,"mature":-2.665515814834107}},"pink":{"lab":[61.36,48.19,-14.5468567],"dh":{"younger":0.9559649662107358,"mature":0.9361170316372849},"negH":{"younger":-0.8438898569744309,"mature":-1.8520088040839782}},"purple":{"lab":[30.47,37.52,-32.50239698],"dh":{"younger":0.9624342978093858,"mature":0.9236331651549576},"negH":{"younger":-0.7078910134122801,"mature":-1.1276342246940974}},"red":{"lab":[41.74,67.28,35.37953382],"dh":{"younger":0.9788041180121151,"mature":0.9261662651512242},"negH":{"younger":-0.8437311571829874,"mature":-1.1817892068303042}},"salmon":{"lab":[61.41,50.4,26.12605772],"dh":{"younger":0.9586006800610991,"mature":0.9322292697770755},"negH":{"younger":-2.1950768673773573,"mature":-2.640932893895762}},"tan":{"lab":[61.58,9.02,22.75216025],"dh":{"younger":0.9399001053437043,"mature":0.9053356331485547},"negH":{"younger":-2.145065505101649,"mature":-2.7104252032121754}},"teal":{"lab":[51.36,-29.27,-4.989059721],"dh":{"younger":0.9258366303198539,"mature":0.950966161039572},"negH":{"younger":-1.6144605468172948,"mature":-2.362481623463042}},"turquoise":{"lab":[90.56,-53.65,-4.582624502],"dh":{"younger":0.9274799616253766,"mature":0.9405753986978189},"negH":{"younger":-2.124422255157983,"mature":-2.394016634830058}},"white":{"lab":[100.0,0.02,-0.006122199],"dh":{"younger":0.9857767801592338,"mature":0.9677206299735678},"negH":{"younger":-0.2651241953563787,"mature":-0.3653256717136742}},"yellow":{"lab":[91.03,-10.7,74.10507534],"dh":{"younger":0.986576951055428,"mature":0.9488351942639428},"negH":{"younger":-0.603755064141428,"mature":-1.0213342187680878}}},"mature":{"beige":{"lab":[71.5,3.92,11.75140997],"dh":{"younger":0.9491889820786691,"mature":0.9094803528587436},"negH":{"younger":-2.104392613120818,"mature":-2.798330044816536}},"black":{"lab":[0.0,0.0,0.0],"dh":{"younger":0.9935103102832491,"mature":0.9870623751381118},"negH":{"younger":-0.2609212517553689,"mature":-0.48513596025551103}},"blue":{"lab":[41.14,7.34,-49.0942495],"dh":{"younger":0.9548203643204638,"mature":0.9827767981643255},"negH":{"younger":-0.8916846863957936,"mature":-1.0141943600618004}},"brown":{"lab":[30.61,14.96,33.74364597],"dh":{"younger":0.9490967362265141,"mature":0.9482700958133155},"negH":{"younger":-0.8037541396635414,"mature":-0.9162159118790908}},"burgundy":{"lab":[20.34,36.98,-6.178061992],"dh":{"younger":0.9434659213958877,"mature":0.9254193626478999},"negH":{"younger":-2.3270053452872883,"mature":-2.5850996693208237}},"cream":{"lab":[90.96,3.51,12.73435763],"dh":{"younger":0.9516432996926564,"mature":0.9502367881068547},"negH":{"younger":-2.632406135545915,"mature":-2.120068604767601}},"green":{"lab":[51.45,-40.07,52.82089521],"dh":{"younger":0.9205363479560034,"mature":0.9801782153366867},"negH":{"younger":-1.145689171991246,"mature":-0.8809455995852988}},"grey":{"lab":[51.22,0.01,-0.003547875],"dh":{"younger":0.958153226985181,"mature":0.970293575696172},"negH":{"younger":-0.6948264283109343,"mature":-0.6122831342413154}},"lilac":{"lab":[71.32,13.48,-19.96878032],"dh":{"younger":0.9200512192127497,"mature":0.9445531113050712},"negH":{"younger":-2.0311607136727594,"mature":-2.42436852928232}},"maroon":{"lab":[20.28,37.55,-2.023365203],"dh":{"younger":0.9402560460730593,"mature":0.922456234390889},"negH":{"younger":-2.431462163243073,"mature":-2.427854172479255}},"mauve":{"lab":[40.98,19.15,0.758975166],"dh":{"younger":0.9191773590030189,"mature":0.9147638333523291},"negH":{"younger":-2.989352170604974,"mature":-3.185456265208118}},"mustard":{"lab":[51.44,4.65,42.09609446],"dh":{"younger":0.9416325844983504,"mature":0.9308127912507617},"negH":{"younger":-3.019642418089723,"mature":-2.6865878704879838}},"orange":{"lab":[61.49,38.44,56.38178431],"dh":{"younger":0.983405687790631,"mature":0.964890358418969},"negH":{"younger":-0.5181447797456838,"mature":-0.8200978379030746}},"peach":{"lab":[61.47,32.14,22.73111356],"dh":{"younger":0.9330299989004479,"mature":0.9580718035136286},"negH":{"younger":-2.351054090088656,"mature":-2.5494113975970176}},"pink":{"lab":[71.32,41.98,2.891985315],"dh":{"younger":0.9450149181955977,"mature":0.9744130726034383},"negH":{"younger":-1.5880590855657386,"mature":-1.0680887832793216}},"purple":{"lab":[30.28,52.15,-43.3228677],"dh":{"younger":0.9462068674100558,"mature":0.9539582909993257},"negH":{"younger":-1.0909980663387757,"mature":-0.3734793806261538}},"red":{"lab":[41.1,66.23,47.12723062],"dh":{"younger":0.9609254291510634,"mature":0.9674078596078326},"negH":{"younger":-1.0212741553384546,"mature":-1.0541426948441752}},"tan":{"lab":[71.54,-3.11,15.51808441],"dh":{"younger":0.9196333227434574,"mature":0.9450016439670529},"negH":{"younger":-2.821066706677837,"mature":-3.0259570642641753}},"turquoise":{"lab":[91.12,-48.07,-14.13386724],"dh":{"younger":0.9449727085889524,"mature":0.9787550738282024},"negH":{"younger":-2.2045036022286926,"mature":-2.3769852276270083}},"white":{"lab":[100.0,0.02,-0.006122199],"dh":{"younger":0.9857767801592338,"mature":0.9677206299735678},"negH":{"younger":-0.2651241953563787,"mature":-0.3653256717136742}},"yellow":{"lab":[81.37,-2.41,82.39061051],"dh":{"younger":0.965382719191775,"mature":0.9800194611970239},"negH":{"younger":-1.1647294115944518,"mature":-0.7996827167875794}}}};
+// __COLOUR_METRICS_END__
+
+function deltaE00(l1, l2) {
+  const [L1, a1, b1] = l1, [L2, a2, b2] = l2, rad = Math.PI / 180;
+  const C1 = Math.hypot(a1, b1), C2 = Math.hypot(a2, b2), Cb = (C1 + C2) / 2;
+  const G = 0.5 * (1 - Math.sqrt(Cb ** 7 / (Cb ** 7 + 25 ** 7)));
+  const a1p = (1 + G) * a1, a2p = (1 + G) * a2;
+  const C1p = Math.hypot(a1p, b1), C2p = Math.hypot(a2p, b2);
+  const h1p = (Math.atan2(b1, a1p) / rad + 360) % 360, h2p = (Math.atan2(b2, a2p) / rad + 360) % 360;
+  const dLp = L2 - L1, dCp = C2p - C1p;
+  let dhp = 0;
+  if (C1p * C2p !== 0) { dhp = h2p - h1p; if (dhp > 180) dhp -= 360; else if (dhp < -180) dhp += 360; }
+  const dHp = 2 * Math.sqrt(C1p * C2p) * Math.sin(dhp * rad / 2);
+  const Lbp = (L1 + L2) / 2, Cbp = (C1p + C2p) / 2;
+  let hbp = h1p + h2p;
+  if (C1p * C2p !== 0) hbp = Math.abs(h1p - h2p) <= 180 ? hbp / 2 : (hbp < 360 ? (hbp + 360) / 2 : (hbp - 360) / 2);
+  const T = 1 - 0.17 * Math.cos((hbp - 30) * rad) + 0.24 * Math.cos(2 * hbp * rad)
+            + 0.32 * Math.cos((3 * hbp + 6) * rad) - 0.20 * Math.cos((4 * hbp - 63) * rad);
+  const dth = 30 * Math.exp(-(((hbp - 275) / 25) ** 2));
+  const Rc = 2 * Math.sqrt(Cbp ** 7 / (Cbp ** 7 + 25 ** 7));
+  const Sl = 1 + 0.015 * (Lbp - 50) ** 2 / Math.sqrt(20 + (Lbp - 50) ** 2);
+  const Sc = 1 + 0.045 * Cbp, Sh = 1 + 0.015 * Cbp * T, Rt = -Math.sin(2 * dth * rad) * Rc;
+  return Math.sqrt((dLp / Sl) ** 2 + (dCp / Sc) ** 2 + (dHp / Sh) ** 2 + Rt * (dCp / Sc) * (dHp / Sh));
+}
+
+// Live scores for the colours on screen, or null if per-colour data is missing.
+function liveMetrics(pal) {
+  const cm = COLOUR_METRICS && COLOUR_METRICS[age];
+  if (!cm || pal.length < 2) return null;
+  const rows = pal.map(p => cm[p[1]]);
+  if (rows.some(r => !r)) return null;
+  const mean = a => a.reduce((x, y) => x + y, 0) / a.length;
+  const other = age === 'younger' ? 'mature' : 'younger';
+  const de = [];
+  for (let i = 0; i < rows.length; i++)
+    for (let j = i + 1; j < rows.length; j++) de.push(deltaE00(rows[i].lab, rows[j].lab));
+  return {
+    other,
+    de: mean(de),
+    dh: { own: mean(rows.map(r => r.dh[age])), other: mean(rows.map(r => r.dh[other])) },
+    h:  { own: mean(rows.map(r => r.negH[age])), other: mean(rows.map(r => r.negH[other])) },
+  };
+}
+
 const METRIC_FOR = {
   perceptual:  { key: 'de', lbl: 'ΔE\u2080\u2080', sub: 'perceptual spread' },
   categorical: { key: 'dh', lbl: 'Δh',            sub: 'categorical distinction' },
@@ -539,11 +590,23 @@ function renderMapVis(vb, lb, kind, pal) {
 function render() {
   const t = TABLE2[age];
   const m = METRIC_FOR[measure];
-  document.getElementById('sMet').textContent = t[m.key].toFixed(2);
-  document.getElementById('sMetLbl').textContent = m.lbl;
-  document.getElementById('sMetSub').textContent = m.sub;
-
   const pal = palFor(vis).slice(0, n);
+  const live = liveMetrics(pal);
+  document.getElementById('sMetLbl').textContent = m.lbl;
+  if (live && m.key === 'de') {
+    document.getElementById('sMet').textContent = live.de.toFixed(1);
+    document.getElementById('sMetSub').textContent =
+      `perceptual spread of these ${pal.length} colours (the same for any viewer)`;
+  } else if (live) {
+    const v = live[m.key], dp = m.key === 'dh' ? 3 : 2;
+    document.getElementById('sMet').textContent = v.own.toFixed(dp);
+    document.getElementById('sMetSub').textContent =
+      `${m.sub} of these ${pal.length} colours with ${AGE_NAME[age]} naming · ` +
+      `${v.other.toFixed(dp)} with ${AGE_NAME[live.other]} naming`;
+  } else {
+    document.getElementById('sMet').textContent = t[m.key].toFixed(2);
+    document.getElementById('sMetSub').textContent = m.sub;
+  }
   const hexes = pal.map(p => p[0]);
   const names = pal.map(p => p[1]);
 
