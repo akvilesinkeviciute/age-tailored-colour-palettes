@@ -105,12 +105,12 @@ footer{text-align:center;font-size:12px;color:var(--text-ter);margin-top:2rem;pa
   <div class="stats">
     <div class="stat"><div class="stat-v">2,418</div><div class="stat-l">participants,<br>aged 16&ndash;87</div></div>
     <div class="stat"><div class="stat-v">103,294</div><div class="stat-l">colour-naming<br>responses</div></div>
-    <div class="stat"><div class="stat-v">31 / 21</div><div class="stat-l">focal colours,<br>younger / mature</div></div>
+    <div class="stat"><div class="stat-v">31 / 21</div><div class="stat-l">focal colours of modal terms,<br>younger / mature</div></div>
   </div>
 
   <div class="shift">
     <div class="shift-chip" title="RGB 0, 255, 255"></div>
-    <div class="shift-txt"><b>Same chip, different name.</b> This stimulus was named <b>&lsquo;cyan&rsquo;</b> by younger participants (16&ndash;39) and <b>&lsquo;turquoise&rsquo;</b> by mature participants (40+) &mdash; one category absorbing a neighbour as vocabulary contracts with age.</div>
+    <div class="shift-txt"><b>Same chip, different name.</b> This stimulus was named <b>&lsquo;cyan&rsquo;</b> by younger participants (16&ndash;39) and <b>&lsquo;turquoise&rsquo;</b> by mature participants (40+): mature namers have no separate &lsquo;cyan&rsquo; category.</div>
   </div>
 </div>
 
@@ -162,10 +162,11 @@ footer{text-align:center;font-size:12px;color:var(--text-ter);margin-top:2rem;pa
 
   <div class="vis-box" id="visBox"></div>
   <div class="leg" id="legBox"></div>
-  <div class="src-note">Colours shown are the leading <span id="nCap">7</span> focal colours ranked by <span id="critName">categorical distinction</span> for the <span id="ageCap">younger</span> group.</div>
+  <div class="src-note">Colours shown are the leading <span id="nCap">7</span> focal colours of modal terms ranked by <span id="critName">categorical distinction</span> for the <span id="ageCap">younger</span> group.<span id="achNote"></span></div>
 </div>
 
 <footer>
+  <p>Paper: Sinkeviciute &amp; Mylonas (2026). Age-tailored colour palettes for inclusive visual communication. <i>Proceedings of BCS HCI 2026</i>.</p>
   <p>Colour-naming data collected at <a href="https://colornaming.net">colornaming.net</a>.</p>
   <p>Contact: <a href="mailto:a.sinkeviciute@nulondon.ac.uk">a.sinkeviciute@nulondon.ac.uk</a> or <a href="mailto:dimitris.mylonas@nulondon.ac.uk">dimitris.mylonas@nulondon.ac.uk</a></p>
 </footer>
@@ -218,16 +219,18 @@ footer{text-align:center;font-size:12px;color:var(--text-ter);margin-top:2rem;pa
 // __PAL_DATA_START__
 let PAL = {
   younger: {
-    perceptual: [["#70ff63","lime green"], ["#67307b","purple"], ["#fae84c","yellow"], ["#001c42","navy"], ["#a7f7bc","mint"], ["#620d25","maroon"], ["#00ffff","cyan"], ["#a8326f","magenta"], ["#00ffeb","turquoise"], ["#c7002d","red"], ["#2a8d2f","green"], ["#d971af","pink"], ["#0d382c","forest green"], ["#f6e2cd","cream"], ["#033833","dark green"], ["#cbece9","light blue"], ["#6d3b18","brown"], ["#bda1ed","lilac"], ["#9f9660","olive"], ["#0062b2","blue"], ["#e5762e","orange"], ["#238882","teal"], ["#ee6b69","salmon"], ["#e1a080","peach"], ["#a08ac5","lavender"], ["#b28e6d","tan"], ["#9e6b88","mauve"], ["#bfac9a","beige"]],
-    categorical: [["#fae84c","yellow"], ["#e5762e","orange"], ["#c7002d","red"], ["#6d3b18","brown"], ["#620d25","maroon"], ["#70ff63","lime green"], ["#67307b","purple"], ["#001c42","navy"], ["#ee6b69","salmon"], ["#a8326f","magenta"], ["#d971af","pink"], ["#0062b2","blue"], ["#f6e2cd","cream"], ["#a08ac5","lavender"], ["#bfac9a","beige"], ["#e1a080","peach"], ["#00ffff","cyan"], ["#9e6b88","mauve"], ["#a7f7bc","mint"], ["#bda1ed","lilac"], ["#2a8d2f","green"], ["#b28e6d","tan"], ["#9f9660","olive"], ["#cbece9","light blue"], ["#00ffeb","turquoise"], ["#0d382c","forest green"], ["#238882","teal"], ["#033833","dark green"]],
-    codability: [["#e5762e","orange"], ["#6d3b18","brown"], ["#fae84c","yellow"], ["#67307b","purple"], ["#2a8d2f","green"], ["#c7002d","red"], ["#d971af","pink"], ["#0062b2","blue"], ["#238882","teal"], ["#70ff63","lime green"], ["#001c42","navy"], ["#a08ac5","lavender"], ["#620d25","maroon"], ["#bda1ed","lilac"], ["#bfac9a","beige"], ["#00ffeb","turquoise"], ["#b28e6d","tan"], ["#ee6b69","salmon"], ["#00ffff","cyan"], ["#e1a080","peach"], ["#a8326f","magenta"], ["#0d382c","forest green"], ["#a7f7bc","mint"], ["#f6e2cd","cream"], ["#9f9660","olive"], ["#9e6b88","mauve"], ["#033833","dark green"], ["#cbece9","light blue"]],
+    perceptual: [["#70ff63", "lime green"], ["#67307b", "purple"], ["#fae84c", "yellow"], ["#001c42", "navy"], ["#a7f7bc", "mint"], ["#000000", "black"], ["#ffffff", "white"], ["#620d25", "maroon"], ["#00ffff", "cyan"], ["#a8326f", "magenta"], ["#00ffeb", "turquoise"], ["#c7002d", "red"], ["#2a8d2f", "green"], ["#d971af", "pink"], ["#0d382c", "forest green"], ["#f6e2cd", "cream"], ["#033833", "dark green"], ["#cbece9", "light blue"], ["#6d3b18", "brown"], ["#bda1ed", "lilac"], ["#9f9660", "olive"], ["#0062b2", "blue"], ["#e5762e", "orange"], ["#238882", "teal"], ["#ee6b69", "salmon"], ["#616161", "grey"], ["#e1a080", "peach"], ["#a08ac5", "lavender"], ["#b28e6d", "tan"], ["#9e6b88", "mauve"], ["#bfac9a", "beige"]],
+    categorical: [["#000000", "black"], ["#616161", "grey"], ["#fae84c", "yellow"], ["#ffffff", "white"], ["#e5762e", "orange"], ["#c7002d", "red"], ["#6d3b18", "brown"], ["#620d25", "maroon"], ["#70ff63", "lime green"], ["#67307b", "purple"], ["#001c42", "navy"], ["#ee6b69", "salmon"], ["#a8326f", "magenta"], ["#d971af", "pink"], ["#0062b2", "blue"], ["#f6e2cd", "cream"], ["#a08ac5", "lavender"], ["#bfac9a", "beige"], ["#e1a080", "peach"], ["#00ffff", "cyan"], ["#9e6b88", "mauve"], ["#a7f7bc", "mint"], ["#bda1ed", "lilac"], ["#2a8d2f", "green"], ["#b28e6d", "tan"], ["#9f9660", "olive"], ["#cbece9", "light blue"], ["#00ffeb", "turquoise"], ["#0d382c", "forest green"], ["#238882", "teal"], ["#033833", "dark green"]],
+    codability: [["#000000", "black"], ["#ffffff", "white"], ["#616161", "grey"], ["#e5762e", "orange"], ["#6d3b18", "brown"], ["#fae84c", "yellow"], ["#67307b", "purple"], ["#2a8d2f", "green"], ["#c7002d", "red"], ["#d971af", "pink"], ["#0062b2", "blue"], ["#238882", "teal"], ["#70ff63", "lime green"], ["#001c42", "navy"], ["#a08ac5", "lavender"], ["#620d25", "maroon"], ["#bda1ed", "lilac"], ["#bfac9a", "beige"], ["#00ffeb", "turquoise"], ["#b28e6d", "tan"], ["#ee6b69", "salmon"], ["#00ffff", "cyan"], ["#e1a080", "peach"], ["#a8326f", "magenta"], ["#0d382c", "forest green"], ["#a7f7bc", "mint"], ["#f6e2cd", "cream"], ["#9f9660", "olive"], ["#9e6b88", "mauve"], ["#033833", "dark green"], ["#cbece9", "light blue"]],
   },
   mature: {
-    perceptual: [["#00ffff","turquoise"], ["#5f1035","maroon"], ["#ecc800","yellow"], ["#721d8c","purple"], ["#4a8a0b","green"], ["#5d123b","burgundy"], ["#f6e2cd","cream"], ["#693e11","brown"], ["#b6a8d3","lilac"], ["#c50016","red"], ["#0062b2","blue"], ["#e5762e","orange"], ["#7f5560","mauve"], ["#b5b093","tan"], ["#f790ab","pink"], ["#967630","mustard"], ["#d47d6e","peach"], ["#bfac9a","beige"]],
-    categorical: [["#0062b2","blue"], ["#4a8a0b","green"], ["#ecc800","yellow"], ["#00ffff","turquoise"], ["#f790ab","pink"], ["#c50016","red"], ["#e5762e","orange"], ["#d47d6e","peach"], ["#721d8c","purple"], ["#f6e2cd","cream"], ["#693e11","brown"], ["#b5b093","tan"], ["#b6a8d3","lilac"], ["#967630","mustard"], ["#5d123b","burgundy"], ["#5f1035","maroon"], ["#7f5560","mauve"], ["#bfac9a","beige"]],
-    codability: [["#721d8c","purple"], ["#ecc800","yellow"], ["#e5762e","orange"], ["#4a8a0b","green"], ["#693e11","brown"], ["#0062b2","blue"], ["#c50016","red"], ["#f790ab","pink"], ["#f6e2cd","cream"], ["#00ffff","turquoise"], ["#b6a8d3","lilac"], ["#5f1035","maroon"], ["#d47d6e","peach"], ["#5d123b","burgundy"], ["#967630","mustard"], ["#bfac9a","beige"], ["#b5b093","tan"], ["#7f5560","mauve"]],
+    perceptual: [["#00ffff", "turquoise"], ["#5f1035", "maroon"], ["#ecc800", "yellow"], ["#721d8c", "purple"], ["#4a8a0b", "green"], ["#5d123b", "burgundy"], ["#ffffff", "white"], ["#000000", "black"], ["#f6e2cd", "cream"], ["#693e11", "brown"], ["#b6a8d3", "lilac"], ["#c50016", "red"], ["#0062b2", "blue"], ["#e5762e", "orange"], ["#7f5560", "mauve"], ["#b5b093", "tan"], ["#f790ab", "pink"], ["#967630", "mustard"], ["#d47d6e", "peach"], ["#7a7a7a", "grey"], ["#bfac9a", "beige"]],
+    categorical: [["#000000", "black"], ["#0062b2", "blue"], ["#4a8a0b", "green"], ["#ecc800", "yellow"], ["#00ffff", "turquoise"], ["#f790ab", "pink"], ["#7a7a7a", "grey"], ["#ffffff", "white"], ["#c50016", "red"], ["#e5762e", "orange"], ["#d47d6e", "peach"], ["#721d8c", "purple"], ["#f6e2cd", "cream"], ["#693e11", "brown"], ["#b5b093", "tan"], ["#b6a8d3", "lilac"], ["#967630", "mustard"], ["#5d123b", "burgundy"], ["#5f1035", "maroon"], ["#7f5560", "mauve"], ["#bfac9a", "beige"]],
+    codability: [["#ffffff", "white"], ["#721d8c", "purple"], ["#000000", "black"], ["#7a7a7a", "grey"], ["#ecc800", "yellow"], ["#e5762e", "orange"], ["#4a8a0b", "green"], ["#693e11", "brown"], ["#0062b2", "blue"], ["#c50016", "red"], ["#f790ab", "pink"], ["#f6e2cd", "cream"], ["#00ffff", "turquoise"], ["#b6a8d3", "lilac"], ["#5f1035", "maroon"], ["#d47d6e", "peach"], ["#5d123b", "burgundy"], ["#967630", "mustard"], ["#bfac9a", "beige"], ["#b5b093", "tan"], ["#7f5560", "mauve"]],
   },
 };
+// Black, white and grey are included in the ranked lists (as in Figure 2) and
+// shown as swatches; charts and maps leave them out (see palFor below).
 // __PAL_DATA_END__
 const NEUTRAL_NAMES = new Set(['black','white','grey','gray']);
 
@@ -394,7 +397,14 @@ function updateControlsForVis() {
   }
 }
 
-function curAvailable() { return PAL[age][measure].length; }
+// Swatches show every focal colour, including black, white and grey; charts
+// and maps use chromatic colours only (achromatic colours are kept for text and
+// backgrounds in visualisation design, as in the paper).
+function palFor(v) {
+  const full = PAL[age][measure];
+  return v === 'swatches' ? full : full.filter(p => !NEUTRAL_NAMES.has(p[1]));
+}
+function curAvailable() { return palFor(vis).length; }
 
 function syncSliderBounds() {
   const mx = curAvailable();
@@ -462,13 +472,14 @@ function render() {
   document.getElementById('sMetLbl').textContent = m.lbl;
   document.getElementById('sMetSub').textContent = m.sub;
 
-  const pal = PAL[age][measure].slice(0, n);
+  const pal = palFor(vis).slice(0, n);
   const hexes = pal.map(p => p[0]);
   const names = pal.map(p => p[1]);
 
   document.getElementById('nCap').textContent = n;
   document.getElementById('critName').textContent = CRIT_NAME[measure];
   document.getElementById('ageCap').textContent = AGE_NAME[age];
+  document.getElementById('achNote').textContent = vis === 'swatches' ? '' : ' Black, white and grey are left out of charts and maps.';
 
   const vb = document.getElementById('visBox');
   const lb = document.getElementById('legBox');
